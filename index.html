@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alley Shooter - Levels</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- NEW: Start Menu -->
+        <div class="start-menu" id="startMenu">
+            <div class="start-menu-content">
+                <h1 class="game-title">ALLEY<br>SHOOTER</h1>
+                <div class="game-subtitle">10 Levels of Combat</div>
+                
+                <div class="menu-instructions">
+                    <h3>HOW TO PLAY</h3>
+                    <div class="instruction-grid">
+                        <div class="instruction-item">
+                            <span class="key">MOUSE</span>
+                            <span class="action">Aim and Shoot</span>
+                        </div>
+                        <div class="instruction-item">
+                            <span class="key">W / S</span>
+                            <span class="action">Move Up/Down</span>
+                        </div>
+                        <div class="instruction-item">
+                            <span class="key">R</span>
+                            <span class="action">Reload</span>
+                        </div>
+                        <div class="instruction-item">
+                            <span class="key">P</span>
+                            <span class="action">Pause</span>
+                        </div>
+                    </div>
+                    
+                    <div class="game-features">
+                        <p>10 Progressive Levels</p>
+                        <p>Combat with Reload System</p>
+                        <p>Multiple Enemy Types</p>
+                        <p>Boss Battle with Shield Defense</p>
+                        <p>Ammo Upgrades Each Level</p>
+                    </div>
+                </div>
+                
+                <div class="menu-buttons">
+                    <button class="play-button" onclick="startGame()">
+                        <span class="button-text">START GAME</span>
+                    </button>
+                    
+                    <div class="difficulty-info">
+                        <p>Levels 1-4: Regular Enemies</p>
+                        <p>Levels 5-8: Fast Enemies</p>
+                        <p>Level 9: Tank Enemies</p>
+                        <p>Level 10: Boss Battle</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="start-menu-footer">
+                <p>Made by Sandeep7764</p>
+            </div>
+        </div>
+        
+        <!-- Existing Game UI (hidden initially) -->
+        <div class="game-ui" id="gameUI" style="display: none;">
+            <div class="hud">
+                <div class="level-info">
+                    <span>LEVEL: <span id="currentLevel">1</span></span>
+                    <span>ENEMIES LEFT: <span id="enemiesLeft">0</span></span>
+                </div>
+                
+                <div class="health-container">
+                    <span>HEALTH:</span>
+                    <div class="health-bar">
+                        <div class="health-fill" id="healthFill"></div>
+                    </div>
+                    <span id="healthText">100/100</span>
+                </div>
+                
+                <div class="ammo-container">
+                    <span>AMMO:</span>
+                    <div class="bullets" id="bulletSlots">
+                        <!-- Dynamically generated bullet slots -->
+                    </div>
+                    <div class="reload-status" id="reloadStatus"></div>
+                </div>
+                
+                <div class="score-container">
+                    <span>SCORE: <span id="score">0</span></span>
+                </div>
+            </div>
+            
+            <canvas id="gameCanvas" width="1000" height="600"></canvas>
+            
+            <div class="instructions">
+                <p>Click to shoot enemies! Use W/S to move up/down. Press R to reload manually.</p>
+                <p><strong>Level 10:</strong> Drag the small blue pole to shield yourself from boss bullets!</p>
+            </div>
+            
+            <div class="made-by">
+                Made by Sandeep7764
+            </div>
+        </div>
+        
+        <!-- Existing Overlays -->
+        <div class="level-transition" id="levelTransition" style="display: none;">
+            <h2 id="transitionTitle">LEVEL COMPLETE!</h2>
+            <p id="transitionText">Preparing next level...</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+        
+        <div class="game-over" id="gameOver" style="display: none;">
+            <h2>GAME OVER</h2>
+            <p>Level Reached: <span id="levelReached">1</span></p>
+            <p>Final Score: <span id="finalScore">0</span></p>
+            <button onclick="restartGame()">Play Again</button>
+            <button onclick="returnToMenu()" class="menu-button">Main Menu</button>
+            <p class="credit">Made by Sandeep7764</p>
+        </div>
+        
+        <div class="victory" id="victory" style="display: none;">
+            <h2>CONGRATULATIONS!</h2>
+            <p>You've completed all 10 levels!</p>
+            <p>Final Score: <span id="victoryScore">0</span></p>
+            <button onclick="restartGame()">Play Again</button>
+            <button onclick="returnToMenu()" class="menu-button">Main Menu</button>
+            <p class="credit">Made by Sandeep7764</p>
+        </div>
+    </div>
+
+    <!-- Load JavaScript files -->
+    <script src="js/utils.js"></script>
+    <script src="js/audioManager.js"></script>
+    <script src="js/bullet.js"></script>
+    <script src="js/enemy.js"></script>
+    <script src="js/boss.js"></script>
+    <script src="js/player.js"></script>
+    <script src="js/levelManager.js"></script>
+    <script src="js/game.js"></script>
+</body>
+</html>
